@@ -1,0 +1,35 @@
+<div class="bg-base-100 shadow-sm navbar">
+    <div class="navbar-start">
+        <div class="dropdown">
+            <div tabindex="0" role="button" class="lg:hidden btn btn-ghost">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                </svg>
+            </div>
+            <ul tabindex="0" class="z-1 bg-base-100 shadow mt-3 p-2 rounded-box w-52 menu menu-sm dropdown-content">
+                @for (route of routes(); track $index) {
+                <li class="px-1">
+                    <a class="navlink-item" routerLink="{{ route.path }}" routerLinkActive="navlink-active">
+                        {{ route.title }}</a>
+                </li>
+                }
+            </ul>
+        </div>
+        <a routerLink="/" class="text-white text-xl btn btn-ghost">Teslo | 
+            <span class="text-info">Shop Tech</span></a>
+    </div>
+    <div class="hidden lg:flex navbar-center">
+        <ul class="px-1 menu menu-horizontal">
+            @for (route of routes(); track $index) {
+            <li class="px-1">
+                <a class="navlink-item" routerLink="{{ route.path }}" routerLinkActive="navlink-active">
+                    {{ route.title }}</a>
+            </li>
+            }
+        </ul>
+    </div>
+    <div class="navbar-end">
+        <a class="text-white btn">Button</a>
+    </div>
+</div>

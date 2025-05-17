@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: light --default, coffee --prefersdark;
+}
+
+@layer base {
+  @font-face {
+    font-family: "Rubik";
+    src: url("/assets/fonts/rubik/BricolageGrotesque-VariableFont.ttf") format("truetype");
+  }
+}
+
+@theme {
+  --font-script: "Rubik", sans-serif;
+
+  --animate-fadeIn: fadeIn 0.3s ease-in-out;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+* {
+  font-family: var(--font-script);
+}
+
+.navlink-item {
+  @apply p-2.5 rounded-md font-semibold text-white;
+}
+
+.navlink-item:hover,
+.navlink-active {
+  @apply bg-accent text-white;
+}

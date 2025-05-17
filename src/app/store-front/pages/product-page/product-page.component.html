@@ -1,0 +1,20 @@
+@if (productResource.hasValue()) {
+<div class="gap-5 grid md:grid-cols-2 w-full">
+
+    <!-- Images -->
+    <div>
+        <app-product-carousel [images]="productResource.value().images" />
+    </div>
+
+    <div>
+        <h2 class="font-semibold text-2xl text-accent-content">
+            {{ productResource.value().title }}</h2>
+
+        <div class="divider"></div>
+
+        <p class="text-sm text-justify text-accent-content">
+            {{ productResource.value().description }}
+        </p>
+    </div>
+</div>
+}

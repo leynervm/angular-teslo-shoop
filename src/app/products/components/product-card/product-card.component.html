@@ -1,0 +1,17 @@
+<div class="bg-base-300 shadow-sm w-full animate-fadeIn text-accent-content card">
+
+    <figure>
+        <img class="block w-full object-scale-down" [src]="product().images | productImage" [alt]="product().title" />
+    </figure>
+
+
+    <div class="card-body">
+        <h2 class="leading-none card-title">{{ product().title }}</h2>
+        <p>{{ product().description | slice:0:70 }}...</p>
+        <div class="justify-between items-end card-actions">
+            <span class="bg-neutral-700 p-1 px-2 rounded-sm">{{ product().gender }}</span>
+            <a [routerLink]="['/product', product().id]" routerLinkActive="router-link-active"
+                class="text-white btn btn-accent">Comprar</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<h1 class="font-medium text-info text-2xl">{{ gender() }}</h1>
+<p class="font-light text-sm text-accent-content">Para todos los gustos</p>
+
+<app-pagination [pages]="productsResource.value()?.pages ?? 0" [currentPage]="paginationService.currentPage()" />
+
+<div class="gap-2 sm:gap-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full">
+    @if (productsResource.hasValue()) {
+    @for (product of productsResource.value().products; track product.slug) {
+    <app-product-card [product]="product" />
+    }
+    }
+</div>
