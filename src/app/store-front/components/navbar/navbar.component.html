@@ -16,7 +16,7 @@
                 }
             </ul>
         </div>
-        <a routerLink="/" class="text-white text-xl btn btn-ghost">Teslo | 
+        <a routerLink="/" class="text-white text-xl btn btn-ghost">Teslo |
             <span class="text-info">Shop Tech</span></a>
     </div>
     <div class="hidden lg:flex navbar-center">
@@ -29,7 +29,27 @@
             }
         </ul>
     </div>
-    <div class="navbar-end">
-        <a class="text-white btn">Button</a>
+    @if (authService.authStatus() === 'authenticated') {
+    <div class="gap-1 navbar-end">
+        <span class="text-white btn">
+            {{ authService.user()?.fullName }}</span>
+
+        @if (authService.isAdmin()) {
+        <a routerLink="admin" class="bg-accent !py-2.5 text-white text-xs btn">
+            Dashboard
+        </a>
+        }
+
+        <button class="bg-red-500 !py-2.5 text-white text-xs btn" (click)="authService.logout()">
+            Salir
+        </button>
     </div>
+    }
+    @else if (authService.authStatus() === 'not-authenticated') {
+    <a routerLink="/auth/login" class="!py-2.5 text-white text-xs btn-accent btn">
+        Login</a>
+    }
+    @else{
+    <span class="btn btn-primary">...</span>
+    }
 </div>

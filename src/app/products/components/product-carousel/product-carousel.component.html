@@ -1,9 +1,15 @@
 <div class="w-full h-[400px] swiper" #swiperDiv>
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
+
         @for (item of images(); track $index) {
         <div class="animate-fadeIn swiper-slide">
             <img [src]="item | productImage" [alt]="item" class="w-full h-full object-scale-down" />
+        </div>
+        }
+        @empty {
+        <div class="animate-fadeIn *:swiper-slide">
+            <img [src]="null | productImage" alt="Producto" class="w-full h-full object-scale-down" />
         </div>
         }
     </div>

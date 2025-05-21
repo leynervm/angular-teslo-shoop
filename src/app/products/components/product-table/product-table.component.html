@@ -1,0 +1,51 @@
+<table class="table">
+    <thead class="bg-accent text-accent-content">
+        <tr>
+            <th>Titulo</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of products(); track item.id) {
+        <tr>
+            <td>
+                <div class="flex items-center gap-3">
+                    <div class="avatar">
+                        <div class="w-12 h-12 mask mask-squircle">
+                            <img [src]="item.images | productImage" [alt]="item.title" />
+                        </div>
+                    </div>
+                    <div>
+                        <a [routerLink]="['/admin/products', item.id]" routerLinkActive="router-link-active"
+                            class="font-bold text-info hover:text-accent">{{ item.title }}</a>
+                        <!-- <div class="text-sm">{{ item.description }}</div> -->
+
+                        <div class="text-xs">{{ item.sizes.join(", ") }}</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                {{ item.price | currency }}
+            </td>
+            <td>
+                @if (item.stock <= 10) { <!-- -->
+                    <span class="badge badge-error">{{ item.stock }}</span>
+                    }
+                    <!--  -->
+                    @else if(item.stock <=20) { <!-- -->
+                        <span class="badge badge-warning">{{ item.stock }}</span>
+                        }
+                        <!--  -->
+                        @else {
+                        <span class="badge badge-success">{{ item.stock }}</span>
+                        }
+            </td>
+            <td>
+                <a [routerLink]="['/admin/products', item.id]">Detalle</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

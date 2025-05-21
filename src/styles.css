@@ -29,6 +29,10 @@
 
 * {
   font-family: var(--font-script);
+
+  input:focus, textarea:focus {
+    outline: 0
+  }
 }
 
 .navlink-item {
@@ -38,4 +42,8 @@
 .navlink-item:hover,
 .navlink-active {
   @apply bg-accent text-white;
+}
+
+.admin-link-active {
+  @apply bg-blue-800 text-white;
 }
